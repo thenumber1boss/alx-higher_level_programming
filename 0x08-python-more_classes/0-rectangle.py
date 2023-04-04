@@ -4,6 +4,6 @@ This module crreates an empty class called rectangle
 '''
 
 
-
 class rectangle:
+'''This is an empty class'''
 	pass
