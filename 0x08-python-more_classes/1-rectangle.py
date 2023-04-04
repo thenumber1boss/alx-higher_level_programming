@@ -1,14 +1,7 @@
 #!/usr/bin/python3
 
 class Rectangle:
-# class defining a rectangle
-
-    def __init__(self, width=0, height=0): '''Initialize instance ''' 
-'''
-Arg:
-	width: width of the rectangle
-	height: height of the rectangle
-'''
+    def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
 
