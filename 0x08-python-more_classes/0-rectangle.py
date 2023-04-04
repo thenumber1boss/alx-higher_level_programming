@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-'''
-This module crreates an empty class called rectangle
-'''
+"""
+An empty class Rectangle, that defines a rectangle
+"""
 
 
-class rectangle:
-'''This is an empty class'''
-	pass
+class Rectangle:
+    """ This is an empty class """
+    pass
