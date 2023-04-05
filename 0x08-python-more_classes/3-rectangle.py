@@ -89,7 +89,6 @@ def __str__(self):
             return rectangle
 
         for i in range(self.height):
-            for j in range(self,__width):
-                rectangle += '#'
-            rectangle += '\n'
+            rectangle += ('#' * self.width) + '\n'
+
         return rectangle[:-1]
