@@ -1,96 +1,60 @@
 #!/usr/bin/python3
 """
-This module contains an algorithm that resolves the N-Queen puzzle
-using backtracking
+the N queens puzzle is the challenge of placing N non-attacking queens
+this program will solves the queens problem
 """
+from sys import argv
 
-
-def isSafe(m_queen, nqueen):
-    """ Method that determines if the queens can or can't kill each other
-    Args:
-        m_queen: array that has the queens positions
-        nqueen: queen number
-    Returns:
-        True: when queens can't kill each other
-        False: when some of the queens can kill
-    """
-
-    for i in range(nqueen):
-
-        if m_queen[i] == m_queen[nqueen]:
-            return False
-
-        if abs(m_queen[i] - m_queen[nqueen]) == abs(i - nqueen):
-            return False
-
-    return True
-
-
-def print_result(m_queen, nqueen):
-    """ Method that prints the list with the Queens positions
-    Args:
-        m_queen: array that has the queens positions
-        nqueen: queen number
-    """
-
-    res = []
-
-    for i in range(nqueen):
-        res.append([i, m_queen[i]])
-
-    print(res)
-
-
-def Queen(m_queen, nqueen):
-    """ Recursive function that executes the Backtracking algorithm
-    Args:
-        m_queen: array that has the queens positions
-        nqueen: queen number
-    """
-
-    if nqueen is len(m_queen):
-        print_result(m_queen, nqueen)
-        return
-
-    m_queen[nqueen] = -1
-
-    while((m_queen[nqueen] < len(m_queen) - 1)):
-
-        m_queen[nqueen] += 1
-
-        if isSafe(m_queen, nqueen) is True:
-
-            if nqueen is not len(m_queen):
-                Queen(m_queen, nqueen + 1)
-
-
-def solveNQueen(size):
-    """ Function that invokes the Backtracking algorithm
-    Args:
-        size: size of the chessboard
-    """
-
-    m_queen = [-1 for i in range(size)]
-
-    Queen(m_queen, 0)
-
-
-if __name__ == '__main__':
-
-    import sys
-
-    if len(sys.argv) == 1 or len(sys.argv) > 2:
+if __name__ == "__main__":
+    a = []
+    if len(argv) != 2:
         print("Usage: nqueens N")
-        sys.exit(1)
-
-    try:
-        size = int(sys.argv[1])
-    except:
+        exit(1)
+    if argv[1].isdigit() is False:
         print("N must be a number")
-        sys.exit(1)
-
-    if size < 4:
+        exit(1)
+    N = int(argv[1])
+    if N < 4:
         print("N must be at least 4")
-        sys.exit(1)
+        exit(1)
 
-    solveNQueen(size)
+    # initialize the answer list
+    for i in range(N):
+        a.append([i, None])
+
+    def already_exists(y):
+        """check whether the queen exist already in y value"""
+        for x in range(N):
+            if y == a[x][1]:
+                return True
+        return False
+
+    def reject(x, y):
+        """To check whether the solution is rejected or not"""
+        if (already_exists(y)):
+            return False
+        i = 0
+        while(i < x):
+            if abs(a[i][1] - y) == abs(i - x):
+                return False
+            i += 1
+        return True
+
+    def clear_a(x):
+        """answers from the point of failure on"""
+        for i in range(x, n):
+            a[i][1] = None
+
+    def nqueens(x):
+        """recursive backtracking function to find the solution"""
+        for y in range(N):
+            clear_a(x)
+            if reject(x, y):
+                a[x][1] = y
+                if (x == N - 1):  # accepts the solution
+                    print(a)
+                else:
+                    nqueens(x + 1)  # moves on to next x value to continue
+
+    # start the recursive process at x = 0
+    nqueens(0)
