@@ -44,6 +44,17 @@ class Rectangle:
 
     @height.setter
     def height(self, value):
+        '''
+        This is a method to define the height of the rectangle
+
+        Args:
+            value: height
+
+        Raises:
+            TypeError: if height is not an integer
+            ValueError if height is less than zero
+
+        '''
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         elif value < 0:
