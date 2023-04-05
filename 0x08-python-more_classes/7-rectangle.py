@@ -1,4 +1,6 @@
-s is a rectangle class, defining a rectangle
+#!/usr/bin/python3
+'''
+This is a rectangle class, defining a rectangle
 '''
 
 
@@ -92,15 +94,14 @@ class Rectangle:
         return rectangle[:-1]
 
     def __repr__(self):
-        ''' This  Method returns the string represantion of the instance
-        Returns: string represenation of the object
-        '''
-
-        return "Rectangle({:d}, {:d})".format(self.width, self.height)
+        """Return the string representation of the Rectangle."""
+        rect = "Rectangle(" + str(self.__width)
+        rect += ", " + str(self.__height) + ")"
+        return (rect)
 
     def __del__(self):
-        ''' Method that prints a message when the instance is deleted
-        '''
+        """method to print a message for every delection of a rectangle"""
 
         Rectangle.number_of_instances -= 1
+
         print("Bye rectangle...")
