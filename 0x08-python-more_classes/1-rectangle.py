@@ -13,3 +13,13 @@ class Rectangle:
 
     self.width = width
     self.height = height
+
+
+    @property
+    def width(self):
+    '''
+    Tis method retrieves the walue of the width
+    Returns: width of rectangle
+    '''
+
+    return self.__width
