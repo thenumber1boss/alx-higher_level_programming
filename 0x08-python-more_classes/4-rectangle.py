@@ -93,8 +93,8 @@ class Rectangle:
 
         return rectangle[:-1]
 
-def __repr__(self):i
-        ''' This Method returns the string represantion of the instance
+    def __repr__(self):
+        ''' This  Method returns the string represantion of the instance
         Returns: string represenation of the object
         '''
 
