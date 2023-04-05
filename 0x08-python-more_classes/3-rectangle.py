@@ -76,10 +76,10 @@ class Rectangle:
         if self.width == 0 or self.height == 0:
             return 0
 
-        return (2 * self.width) + (2 * self.height)
+        return (2 * self.width) + (2 * self.height)i
 
-def __str__(self):
-        ''' This returns the Rectangle #
+    def __str__(self):
+        ''' returns the Rectangle #
         Returns: str of the rectangle
         '''
 
