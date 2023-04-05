@@ -92,19 +92,29 @@ class Rectangle:
             rectangle += ("#" * self.width) + "\n"
 
         return rectangle[:-1]
+    def __str__(self):
+        """return the printable string represtation
+        of the rectangle
+        """
+        rectangle = ""
+        if self.__width == 0 or self.__height == 0:
+            return rectangle
+        for i in range(self.__height):
+            rectangle += ("#" * self.__width) + "\n"
+
+        return rectangle[:-1]
 
     def __repr__(self):
-        ''' This  Method returns the string represantion of the instance
-        Returns: string represenation of the object
-        '''
-
-        return "Rectangle({:d}, {:d})".format(self.width, self.height)
-
-
+        """return a string representation of the rectangle
+        to be able to reproduce a new instance
+        """
+        rect = "Rectangle(" + str(self.__width)
+        rect += ", " + str(self.__height) + ")"
+        return (rect)
 
     def __del__(self):
-        """ Method that prints a message when the instance is deleted
-        """
+        """method to print a message for every delection of a rectangle"""
 
         Rectangle.number_of_instances -= 1
+
         print("Bye rectangle...")
